@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Richard Tulio</title>
+    <link rel="stylesheet" href="css.css">
+    <!-- Add FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="mailto:benchardtulio@gmail.com" class="hire-button"><strong>Hire Me</strong></a>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="#personal-info">Personal Information</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#school-projects">School Projects</a></li>
+                
+            </ul>
+            <br>
+        </nav>
+    
+
+        <div class="img-area">
+            <img src="hehe.jpg" alt="Ben Richard Tulio">
+        </div>
+        <h3>Hello World!<br> I'm Ben Richard E. Tulio,<br> a student from Mindanao State University - General Santos</h3>        
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="section" id="personal-info">
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> Ben Richard Emboltorio Tulio</p>
+                <p><strong>Age:</strong> 22</p>
+                <p><strong>Address:</strong> 075 Lanzones Street, Dadiangas North, GSC</p>
+                <p><strong>Email:</strong> benchardtulio@gmail.com</p>
+                <p><strong>Phone Number:</strong> 0967-619-0736</p>
+                <p><strong>Birthday:</strong> December 11, 2001</p>
+                <p><strong>Birthplace:</strong> Koronadal City</p>
+            </div>
+
+            <div class="section" id="education">
+                <h2>Education</h2>
+                <p><strong>Bachelor of Science in Information Technology</strong></p>
+                <p>- Networks Major</p>
+                <p>Mindanao State University (2021 - Present)</p>
+                <p><strong>Science, Technology, Engineering, and Mathematics</strong></p>
+                <p>- STEM 1103 -> STEM 1202</p>
+                <p>Notre Dame of Dadiangas University (2018-2020)</p>
+            </div>
+
+            <div class="section" id="hobbies">
+                <h2>Hobbies</h2>
+
+                <ul> -Playing Musical Instruments<br>
+                    -Hiking<br>
+                    -Playing Online Games<br>
+                    -Researching <br>
+                    -Practicing and etc.<br>
+                    <br><p> I enjoy a variety of activities that reflect my diverse interests and passions.
+                </ul></p>
+
+            </div>
+
+            <div class="section" id="school-projects">
+                <h2>School Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-item" onclick="openModal1('Tulio.png')">
+                        <img src="Tulio.png" alt="Complaints System for Barangay Fatima" class="project-image">
+                        <div class="project-info">
+                            <h3>Complaints System for Barangay Fatima</h3>
+                            <p>Capstone Project</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="Tulio(2).png" alt="Reservation System" class="project-image">
+                        <div class="project-info">
+                            <h3>Reservation System</h3>
+                            <p>Information Management Project</p>
+                            <a href="https://github.com/beabvea/Cybercafe-Reservation-System" class="btn">See Project</a>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="Tulio(3).png" alt="Pushbuttons with Ultrasonic Distance Sensor" class="project-image">
+                        <div class="project-info">
+                            <h3>Pushbuttons with Ultrasonic Distance Sensor</h3>
+                            <p>Special Topics in IT - IoT Project</p>
+                            <a href="https://www.tinkercad.com/things/8oS7X9SmVo0-/editel" class="btn">See Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="certificateModal" class="modal" onclick="closeModal(event)">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/benchardtulio/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/benchardt/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/beabvea" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/ben-richard-tulio-812737326/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include jQuery before your script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include custom JavaScript for Smooth Scrolling -->
+    <script>
+        $('.navbar a[href^="#"]').on('click', function (event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 500);
+        });
+
+        function openModal(src) {
+            var modal = document.getElementById("certificateModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
+        function openModal1(src) {
+            var modal = document.getElementById("certificateModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = src;
+        }
+
+        function closeModal(event) {
+            var modal = document.getElementById("certificateModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
