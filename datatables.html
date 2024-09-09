@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatables</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="columnControls">
+        <label><input type="checkbox" class="column-toggle" data-column="0" checked> Select</label>
+        <label><input type="checkbox" class="column-toggle" data-column="1" checked> Name</label>
+        <label><input type="checkbox" class="column-toggle" data-column="2" checked> Position</label>
+        <label><input type="checkbox" class="column-toggle" data-column="3" checked> Office</label>
+        <label><input type="checkbox" class="column-toggle" data-column="4" checked> Extn.</label>
+        <label><input type="checkbox" class="column-toggle" data-column="5" checked> Start Date</label>
+        <label><input type="checkbox" class="column-toggle" data-column="6" checked> Salary</label>
+        <label><input type="checkbox" class="column-toggle" data-column="7" checked> Skills</label>
+    </div>
+
+ 
+    <div class="tabs">
+        <button class="tab-button" data-tab="tab1">Table 1</button>
+        <button class="tab-button" data-tab="tab2">Table 2</button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="tab1" class="tab-content active">
+        <h2>Table 1</h2>
+        <table id="example1" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name <input type="text" id="nameSearch1" placeholder="Search Name"></th>
+                    <th>Position <input type="text" id="positionSearch1" placeholder="Search Position"></th>
+                    <th>Office <input type="text" id="officeSearch1" placeholder="Search Office"></th>
+                    <th>Extn. <input type="text" id="extnSearch1" placeholder="Search Extn"></th>
+                    <th>Start date <input type="text" id="startDateSearch1" placeholder="Search Start Date"></th>
+                    <th>Salary <input type="text" id="salarySearch1" placeholder="Search Salary"></th>
+                    <th>Skills <input type="text" id="skillsSearch1" placeholder="Search Skills"></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="tab2" class="tab-content">
+        <h2>Table 2</h2>
+        <table id="example2" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name <input type="text" id="nameSearch2" placeholder="Search Name"></th>
+                    <th>Position <input type="text" id="positionSearch2" placeholder="Search Position"></th>
+                    <th>Office <input type="text" id="officeSearch2" placeholder="Search Office"></th>
+                    <th>Extn. <input type="text" id="extnSearch2" placeholder="Search Extn"></th>
+                    <th>Start date <input type="text" id="startDateSearch2" placeholder="Search Start Date"></th>
+                    <th>Salary <input type="text" id="salarySearch2" placeholder="Search Salary"></th>
+                    <th>Skills <input type="text" id="skillsSearch2" placeholder="Search Skills"></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+ 
+    <button id="deleteSelected">Delete row/s</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+    <script>
+    $(document).ready(function() {
+        
+        var table1 = $('#example1').DataTable({
+            "ajax": "data.txt",
+            "searching": true,
+            "dom": '<"top"p>rt<"bottom"li><"clear">',
+            "columns": [
+                {
+                    "data": null,
+                    "defaultContent": "<input type='checkbox' class='select-checkbox'>",
+                    "orderable": false
+                },
+                { "data": 0},
+                { "data": 1, orderable: false },
+                { "data": 2, orderable: false },
+                { "data": 3, orderable: false },
+                { "data": 4, orderable: false },
+                { "data": 5, orderable: false },
+                { "data": 6, orderable: false } 
+            ]
+        });
+
+        var table2 = $('#example2').DataTable({
+            "ajax": "data.txt", 
+            "searching": false, 
+            "dom": '<"top"p>rt<"bottom"li><"clear">', 
+            "columns": [
+                {
+                    "data": null,
+                    "defaultContent": "<input type='checkbox' class='select-checkbox'>",
+                    "orderable": false
+                },
+                { "data": 0},
+                { "data": 1, orderable: false },
+                { "data": 2, orderable: false },
+                { "data": 3, orderable: false },
+                { "data": 4, orderable: false },
+                { "data": 5, orderable: false },
+                { "data": 6, orderable: false } 
+            ]
+        });
+
+        // Handle column visibility toggling
+        $('.column-toggle').on('change', function() {
+            var column = table1.column($(this).data('column'));
+            column.visible($(this).is(':checked'));
+            var column2 = table2.column($(this).data('column'));
+            column2.visible($(this).is(':checked'));
+        });
+
+        // Handle Delete All Selected Rows
+        $('#deleteSelected').on('click', function() {
+            $('#example1 tbody .select-checkbox:checked').each(function () {
+                var row = table1.row($(this).parents('tr'));
+                row.remove().draw();  // Remove the selected row
+            });
+
+            $('#example2 tbody .select-checkbox:checked').each(function () {
+                var row = table2.row($(this).parents('tr'));
+                row.remove().draw();  // Remove the selected row
+            });
+        });
+
+        // Handle column-specific searching
+        function applySearch(table, columnIndex, inputId) {
+            $(inputId).on('input', function() {
+                var searchValue = this.value;
+                table.column(columnIndex).search(searchValue, true, false).draw();  // Exact match
+            });
+        }
+
+        // Initialize column-specific search for both tables
+        applySearch(table1, 1, '#nameSearch1');
+        applySearch(table1, 2, '#positionSearch1');
+        applySearch(table1, 3, '#officeSearch1');
+        applySearch(table1, 4, '#extnSearch1');
+        applySearch(table1, 5, '#startDateSearch1');
+        applySearch(table1, 6, '#salarySearch1');
+        applySearch(table1, 7, '#skillsSearch1');
+
+        applySearch(table2, 1, '#nameSearch2');
+        applySearch(table2, 2, '#positionSearch2');
+        applySearch(table2, 3, '#officeSearch2');
+        applySearch(table2, 4, '#extnSearch2');
+        applySearch(table2, 5, '#startDateSearch2');
+        applySearch(table2, 6, '#salarySearch2');
+        applySearch(table2, 7, '#skillsSearch2');
+
+        // Handle tab switching
+        $('.tab-button').on('click', function() {
+            var tabId = $(this).data('tab');
+            $('.tab-content').removeClass('active');
+            $('#' + tabId).addClass('active');
+        });
+    });
+    </script>
+</body>
+</html>

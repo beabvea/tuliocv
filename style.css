@@ -1,0 +1,162 @@
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+}
+
+/* Tabs container styling */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.tab-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    margin: 0 5px;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tab-button.active {
+    background-color: #0056b3;
+    border-bottom: 1px solid #fff;
+}
+
+/* Tab content styling */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Column Controls styling */
+#columnControls {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#columnControls h3 {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+#columnControls label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+#columnControls input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Delete Button styling */
+#deleteSelected {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#deleteSelected:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* DataTables styling */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 8px 12px;
+    margin: 0 2px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #f1f1f1;
+    border-color: #ccc;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Specific styling for Table 2 */
+#tab2 .display {
+    background-color: #f9f9f9; /* Light gray background for Table 2 */
+}
+
+#tab2 thead th {
+    background-color: #e9ecef; /* Slightly darker gray for table headers */
+    color: #333;
+}
+
+#tab2 tbody tr:nth-child(odd) {
+    background-color: #f1f1f1; /* Alternating row colors for better readability */
+}
+
+#tab2 tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.dt-paging {
+    justify-content: center;
+    display: flex;
+}
+.dt-column-title{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
